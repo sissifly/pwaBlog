@@ -50,7 +50,7 @@ Web App Manifest是一个json格式的文件清单，定义应用程序的相关
 <link rel="manifest" href="/manifest.json">
 ```
 2. 定义manifest.json
-```
+```javaScript
 {
   "name": "appName", //APP name
   "short_name": "cooking", //APP Name简称
@@ -131,7 +131,7 @@ pwa应用和原生应用桌面图标对比
 
 ### 六、实战离线缓存
 1. 注册service worker
-```
+```javaScript
 if ('serviceWorker' in navigator) {
   // 注册 service Worker
   window.addEventListener('load', function () {
@@ -150,7 +150,7 @@ if ('serviceWorker' in navigator) {
 
 2. 缓存文件  
 
-```
+```javaScript
 var cacheFiles = [
   'home.html',
   './js/home.js',
@@ -175,7 +175,7 @@ this.addEventListener('install', function (event) {
 
 3.监听fetch缓存
 
-```
+```javaScript
 this.addEventListener('fetch', function (event) {
   event.respondWith(
     caches.match(event.request)
