@@ -145,7 +145,8 @@ if ('serviceWorker' in navigator) {
         console.log('ServiceWorker registration failed: ', err);
       });
   });
-}```
+}
+```
 
 2. 缓存文件  
 
@@ -169,7 +170,8 @@ this.addEventListener('install', function (event) {
       return cache.addAll(cacheFiles);
     })
   );
-});```
+});
+```
 
 3.监听fetch缓存
 
