@@ -82,12 +82,14 @@ pwa应用和原生应用桌面图标对比
 ![](./images/homeiconcompare.png)  
 
 ### 五、核心技术之Service Worker
+
 **1）Service Worker是什么**
 > Service Worker是浏览器在后台独立于网页运行的一段JavaScript脚本.
 
 > 类似于浏览器与网络之间的代理，可以拦截、处理、响应网络请求；配合Cache Storage API，可控制文件粒度的缓存，实现 web 应用的离线访问。
 
 ![](./images/service_worker.png)
+
 [图片引自：https://openweb.baidu.com/pwa-future/](https://openweb.baidu.com/pwa-future/)
 
 **2）主要功能**  
