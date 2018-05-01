@@ -37,8 +37,10 @@ Engaging  - Feel like a natural app on the device, with an immersive user experi
 * 在线资源的离线缓存  
 
 ### 四、关键技术之Web App Manifest
+
 **1） 功能**    
 解决web应用入口问题, 使 web 应用能够像原生应用一样被添加到主屏、全屏执行  
+
 **2）定义**  
 Web App Manifest是一个json格式的文件清单，定义应用程序的相关数据，比如：名称，作者，图标等等。
 
