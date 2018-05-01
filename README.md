@@ -112,6 +112,7 @@ pwa应用和原生应用桌面图标对比
 
 **生命周期**
 ![](./images/lifecycle.jpg)
+
 [图片引自：https://huangxuan.me/2017/02/09/nextgen-web-pwa/](https://huangxuan.me/2017/02/09/nextgen-web-pwa/)
 
 1. 注册，调用serviceWorker的register方法注册，浏览器在后台进行安装动作
