@@ -35,8 +35,6 @@ Engaging  - Feel like a natural app on the device, with an immersive user experi
 
 ### 三、项目要解决的实际问题
 * 在线资源的离线缓存  
-* 方案之一：Service Worker
-
 
 ### 四、关键技术之Web App Manifest
 **1） 功能**    
@@ -74,25 +72,30 @@ Web App Manifest是一个json格式的文件清单，定义应用程序的相关
 }
 ```
 3. 实例  
-iOS 没有提示，需手动添加 
+iOS 没有提示，需手动添加
 
 ![](./images/addhome1.png)
 
 pwa应用和原生应用桌面图标对比    
-第一排：pwa应用；第二排：原生应用 
+第一排：pwa应用；第二排：原生应用
 
 ![](./images/homeiconcompare.png)  
 
 ### 五、核心技术之Service Worker
-**1）定义**
->    Service Worker是浏览器在后台独立于网页运行的一段JavaScript脚本.
+**1）Service Worker是什么**
+> Service Worker是浏览器在后台独立于网页运行的一段JavaScript脚本.
+
+> 类似于浏览器与网络之间的代理，可以拦截、处理、响应网络请求；配合Cache Storage API，可控制文件粒度的缓存，实现 web 应用的离线访问。
+
+![](./images/service_worker.png)
+[图片引自：https://openweb.baidu.com/pwa-future/](https://openweb.baidu.com/pwa-future/)
 
 **2）主要功能**  
 * web APP实现持久离线缓存，离线内容开发者可控，（缓存机制依赖 Cache API ）pwa 应用离线使用的核心技术
 * 独立于网页的worker线程，可拦截和处理网络请求（依赖HTML5 fetch API）
 * 向客户端推送消息（Web Push）  
 
-**3）部分特性**  
+**3）特性**  
 * 不能直接操作 DOM
 * 安全，必须在HTTPS下才能工作（localhost例外）
 * 异步实现，内部大都是通过 Promise 实现
@@ -103,28 +106,27 @@ pwa应用和原生应用桌面图标对比
 
 **4）简介**
 
+**生命周期**
+![](./images/lifecycle.jpg)
+[图片引自：https://huangxuan.me/2017/02/09/nextgen-web-pwa/](https://huangxuan.me/2017/02/09/nextgen-web-pwa/)
 
-**5）生命周期**  
-注册 ——> 安装 ——> 激活 ——> 监听事件【事件驱动】 ——> 销毁
+1. 注册，调用serviceWorker的register方法注册，浏览器在后台进行安装动作
+2. 安装，开始安装时会触发install事件，这个阶段可以进行静态资源缓存操作
+3. 激活，安装完成进入激活状态，触发 activate 事件，这个阶段可以更新旧版本、清理缓存等操作；监听事件（事件驱动）
+4. 销毁
 
-* 支持的事件  
-install、activate、message（postMessage API）、fetch、push（ Notification API 和 PUSH API）、sync
 
-**5）实践**  
+**支持的事件**  
+**install**、**activate**、**message**、**fetch**、**push**、**sync**  
+详细内容请参考[MDN](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers)
+
+**注意**  
 当第一次加载页面时，Service Worker 还没有激活，所以它不会处理任何请求。只有当它安装和激活后，才能控制在其范围内的一切。这意味着，只有你刷新页面或者导航到另一个页面，Service Worker 内的逻辑才会启动。
 
-开发工具 chrome://inspect/#service-workers
+
+### 六、实战离线缓存
 
 
-
-是什么
-解决什么问题【技术出现的背景和目的】
-应用案例
-我们为什么要使用【某个技术解决我们自己实际的问题】
-怎么做？如何接入？
-收益【期望，打点拿数据】
-
-### 六、关键技术之Web Push
 
 ### 附录
 ######  1）博客  
@@ -138,3 +140,6 @@ install、activate、message（postMessage API）、fetch、push（ Notification
 
 ######  3）书籍  
 1. [第一本中文PWA](https://github.com/SangKa/PWA-Book-CN)（官方告示预计2018年5月份正式出版）
+
+######  4）开发工具  
+ 1. chrome://inspect/#service-workers
