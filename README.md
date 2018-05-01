@@ -1,7 +1,7 @@
 
 
 ### 一、PWA简介
-** 1) 背景 **
+**1) 背景**
 
 当前web应用劣势：
 1. 无独立入口，依赖浏览器
@@ -9,17 +9,17 @@
 3. 用户体验无法媲美Native（网络下载）
 4. 无消息推送功能
 
-** 2) PWA 是什么 **
+**2) PWA 是什么**
 > 全称为Progressive Web Apps（渐进式web APP），是一种提升 Web App用户体验的新方法，能给用户原生应用的体验。  
 PWA不指某一项技术，包括一系列关键技术,可以让web APP拥有Native APP的特征。
 
-** 3) PWA 解决什么问题 **  
+**3) PWA 解决什么问题**  
 *改善用户体验，媲美Native*
 1. 离线使用：提高加载速度，缓存技术结合（Service Worker）实现离线使用
 2. 可安装：不依赖浏览器作为入口，添加主屏幕，全屏执行（Web App Manifest）
 3. 消息推送：未启用应用时主动发送推送通知（Push Notification ）
 
-** 4) PWA 特征 **
+**4) PWA 特征**
 
 > Reliable  - Load instantly and never show the downasaur, even in uncertain network conditions.  
 可靠 - 即使在不确定的网络条件下，也能立即加载并永不显示停机   
@@ -39,12 +39,12 @@ Engaging  - Feel like a natural app on the device, with an immersive user experi
 
 
 ### 四、关键技术之Web App Manifest
-** 1） 功能**    
+**1） 功能**    
 解决web应用入口问题, 使 web 应用能够像原生应用一样被添加到主屏、全屏执行  
-** 2）定义**  
+**2）定义**  
 Web App Manifest是一个json格式的文件清单，定义应用程序的相关数据，比如：名称，作者，图标等等。
 
-** 3）使用**
+**3）使用**
 1. 添加manifest.json
 ```
 <link rel="manifest" href="/manifest.json">
@@ -74,11 +74,14 @@ Web App Manifest是一个json格式的文件清单，定义应用程序的相关
 }
 ```
 3. 实例  
-iOS 没有提示，需手动添加
+iOS 没有提示，需手动添加 
+
 ![](./images/addhome1.png)
-pwa应用和原生应用桌面图标对比  
-第一排：pwa应用；第二排：原生应用
-![](./images/homeiconcompare.png)
+
+pwa应用和原生应用桌面图标对比    
+第一排：pwa应用；第二排：原生应用 
+
+![](./images/homeiconcompare.png)  
 
 ### 五、核心技术之Service Worker
 **1）定义**
