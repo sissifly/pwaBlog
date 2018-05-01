@@ -130,8 +130,63 @@ pwa应用和原生应用桌面图标对比
 
 
 ### 六、实战离线缓存
+1. 注册service worker
+```
+if ('serviceWorker' in navigator) {
+  // 注册 service Worker
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('serviceworker.js', {scope: './'})
+      .then(function (registration) {
+        // 注册成功
+        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      })
+      .catch(function (err) {
+        // 注册失败
+        console.log('ServiceWorker registration failed: ', err);
+      });
+  });
+}```
 
+2. 缓存文件  
 
+```
+var cacheFiles = [
+  'home.html',
+  './js/home.js',
+  './js/libs/zepto.min.js',
+  './css/base.css',
+  './css/reset.css',
+  './css/home.css'
+];
+
+// 监听 service worker 的 install 事件
+this.addEventListener('install', function (event) {
+  // 如果监听到了 service worker 已经安装成功的话，就会调用 event.waitUntil 回调函数
+  event.waitUntil(
+    // caches是一个 CacheStorage 对象，使用open()方法打开一个缓存，缓存通过名称进行区分。
+    caches.open('xiachufang-caches').then(function (cache) {
+      // 通过 cache 缓存对象的 addAll() 方法缓存文件。
+      return cache.addAll(cacheFiles);
+    })
+  );
+});```
+
+3.监听fetch缓存
+
+```
+this.addEventListener('fetch', function (event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function (response) {
+        // 如何有缓存的话，那么就直接返回缓存，否则直接获取源文件
+        if (response) {
+          return response;
+        }
+        return fetch(event.request);
+      })
+  );
+});
+```
 
 ### 附录
 ######  1）博客  
